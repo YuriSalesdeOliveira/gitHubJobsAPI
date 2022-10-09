@@ -1,0 +1,20 @@
+{
+    "name": "yurioliveira/githubjobsapi",
+    "description": "API para o projeto gitHubJobs",
+    "authors": [
+        {
+            "name": "Yuri Sales de Oliveira",
+            "email": "yuri_oli@hotmail.com",
+            "role": "Programador",
+            "homepage": "https://www.facebook.com/profile.php?id=100052262689312"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Source\\": "source/"
+        }
+    },
+    "require": {
+        "coffeecode/router": "^1.0"
+    }
+}
