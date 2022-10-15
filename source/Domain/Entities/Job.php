@@ -23,6 +23,54 @@ class Job extends Entity
         private DateTimeImmutable $createdAt,
         private DateTimeImmutable $updatedAt
     ) {
-        
+    }
+
+    public function toArray(): array
+    {
+        $job = [
+            'identity' => $this->getIdentity(),
+            'image' => $this->getImage(),
+            'author' => $this->getAuthor(),
+            'title' => $this->getTitle(),
+            'tags' => $this->getTags(),
+            'city' => $this->getCity(),
+            'createdAt' => $this->getCreatedAt(),
+            'updatedAt' => $this->getUpdatedAt()
+        ];
+
+        return $job;
+    }
+
+    public function getIdentity(): Identity
+    {
+        return new Identity();
+    }
+    public function getImage(): Image
+    {
+        return new Image();
+    }
+    public function getAuthor(): Author
+    {
+        return new Author();
+    }
+    public function getTitle(): Title
+    {
+        return new Title();
+    }
+    public function getTags(): Tag
+    {
+        return new Tag();
+    }
+    public function getCity(): City
+    {
+        return new City();
+    }
+    public function getCreatedAt(): DateTimeImmutable
+    {
+        return new DateTimeImmutable();
+    }
+    public function getUpdatedAt(): DateTimeImmutable
+    {
+        return new DateTimeImmutable();
     }
 }
