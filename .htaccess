@@ -1,3 +1,6 @@
+Header set Access-Control-Allow-Origin "*"
+Header set Content-Type "application/json"
+
 RewriteEngine on
 RewriteRule ^$ public/ [L]
 RewriteRule (.*) public/$1 [L]
