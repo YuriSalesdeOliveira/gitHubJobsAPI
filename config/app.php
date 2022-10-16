@@ -2,6 +2,10 @@
 
 return [
     'site' => [
+        'name' => '',
+        'description' => '',
+        'domain' => '',
+        'locale' => 'pt_BR',
         'base' => 'http://localhost/gitHubJobsAPI'
     ],
     'database' => [

@@ -26,5 +26,6 @@ $router->get('/erro/{error_code}', function ($data) {
 $router->dispatch();
 
 if ($error = $router->error()) {
+    
     $router->redirect('error', ['error_code' => $error]);
 }
