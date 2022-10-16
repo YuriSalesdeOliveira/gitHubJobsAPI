@@ -7,7 +7,7 @@ function path(string $key, string $default = ''): string
     return isset($path[$key]) ? $path[$key] : $default;
 }
 
-function app(string $key, string $default = ''): string
+function app(string $key, string|array $default = ''): string|array
 {
     $keyAsArray = explode('.', $key);
 

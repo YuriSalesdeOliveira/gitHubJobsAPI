@@ -4,7 +4,7 @@ namespace Database;
 
 use PDO;
 
-class Connection implements ConnectionInterface
+class PDOConnection implements ConnectionInterface
 {
     private PDO $instance;
 
