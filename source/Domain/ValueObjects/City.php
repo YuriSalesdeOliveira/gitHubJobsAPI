@@ -20,7 +20,7 @@ class City
         return new City($city);
     }
 
-    public static function validate(string $city): void
+    protected static function validate(string $city): void
     {
         if (empty($city)) {
 

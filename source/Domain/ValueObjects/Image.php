@@ -20,7 +20,7 @@ class Image
         return new Image($image);
     }
 
-    public static function validate(string $image): void
+    protected static function validate(string $image): void
     {
         if (empty($image)) {
 

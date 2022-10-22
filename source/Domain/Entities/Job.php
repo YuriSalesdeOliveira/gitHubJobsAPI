@@ -4,12 +4,12 @@ namespace Source\Domain\Entities;
 
 use Entity;
 use DateTimeImmutable;
-use Source\Domain\ValueObjects\Tag;
 use Source\Domain\ValueObjects\City;
 use Source\Domain\ValueObjects\Image;
 use Source\Domain\ValueObjects\Title;
 use Source\Domain\ValueObjects\Author;
 use Source\Domain\ValueObjects\Identity;
+use Source\Domain\ValueObjects\TagCollection;
 
 class Job extends Entity
 {
@@ -18,7 +18,7 @@ class Job extends Entity
         private Image $image,
         private Author $author,
         private Title $title,
-        private Tag $tags,
+        private TagCollection $tagCollection,
         private City $city,
         private DateTimeImmutable $createdAt,
         private DateTimeImmutable $updatedAt
@@ -32,7 +32,7 @@ class Job extends Entity
             'image' => $this->getImage(),
             'author' => $this->getAuthor(),
             'title' => $this->getTitle(),
-            'tags' => $this->getTags(),
+            'tagCollection' => $this->getTagCollection(),
             'city' => $this->getCity(),
             'createdAt' => $this->getCreatedAt(),
             'updatedAt' => $this->getUpdatedAt()
@@ -43,34 +43,34 @@ class Job extends Entity
 
     public function getIdentity(): Identity
     {
-        return new Identity();
+        return $this->identity;
     }
     public function getImage(): Image
     {
-        return new Image();
+        return $this->image;
     }
     public function getAuthor(): Author
     {
-        return new Author();
+        return $this->author;
     }
     public function getTitle(): Title
     {
-        return new Title();
+        return $this->title;
     }
-    public function getTags(): Tag
+    public function getTagCollection(): TagCollection
     {
-        return new Tag();
+        return $this->tagCollection;
     }
     public function getCity(): City
     {
-        return new City();
+        return $this->city;
     }
     public function getCreatedAt(): DateTimeImmutable
     {
-        return new DateTimeImmutable();
+        return $this->createdAt;
     }
     public function getUpdatedAt(): DateTimeImmutable
     {
-        return new DateTimeImmutable();
+        return $this->updatedAt;
     }
 }

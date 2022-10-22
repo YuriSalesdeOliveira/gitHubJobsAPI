@@ -20,7 +20,7 @@ class Author
         return new Author($author);
     }
 
-    public static function validate(string $author): void
+    protected static function validate(string $author): void
     {
         if (empty($author)) {
 

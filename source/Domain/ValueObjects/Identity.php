@@ -20,7 +20,7 @@ class Identity
         return new Identity($identity);
     }
 
-    public static function validate(string $identity): void
+    protected static function validate(string $identity): void
     {
         if (empty($identity)) {
 

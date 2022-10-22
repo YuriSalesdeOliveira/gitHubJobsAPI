@@ -20,7 +20,7 @@ class Title
         return new Title($title);
     }
 
-    public static function validate(string $title): void
+    protected static function validate(string $title): void
     {
         if (empty($title)) {
 

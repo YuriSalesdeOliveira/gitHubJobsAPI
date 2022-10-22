@@ -20,7 +20,7 @@ class Tag
         return new Tag($tag);
     }
 
-    public static function validate(string $tag): void
+    protected static function validate(string $tag): void
     {
         if (empty($tag)) {
 
