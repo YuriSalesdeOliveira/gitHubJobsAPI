@@ -6,7 +6,7 @@ use Source\UseCase\ReadJob\ReadJob;
 use Source\UseCase\ReadJob\InputBoundary;
 use Source\UseCase\ReadJob\OutputBoundary;
 
-class GetJobsController implements ControllerInterface
+class GetJobsController extends Controller implements ControllerInterface
 {
     public function __construct(
         private ReadJob $useCase
@@ -15,7 +15,15 @@ class GetJobsController implements ControllerInterface
 
     public function handle(array $data): void
     {
-        $input = new InputBoundary([]);
+        $this->validateToken($data['token']);
+
+        $filters = [];
+        if (isset($data['column']) && isset($data['value'])) {
+
+            $filters[] = [$data['column'], '=', $data['value']];
+        }
+
+        $input = new InputBoundary($filters);
 
         /** @var OutputBoundary $output */
         $output = $this->useCase->handle($input);

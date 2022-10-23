@@ -98,14 +98,34 @@ class GetJobRepository implements GetJobRepositoryInterface
 
         foreach ($this->jobs as $job) {
 
-            $job = match ($operator) {
-                '=' => $job[$column] = $value ? $job : false,
-                '!=' => $job[$column] != $value ? $job : false,
-                '<' => $job[$column] < $value ? $job : false,
-                '>' => $job[$column] > $value ? $job : false,
-                '<=' => $job[$column] <= $value ? $job : false,
-                '>=' => $job[$column] >= $value ? $job : false
+            $validateFilterResult = match ($operator) {
+                '=' => $job[$column] == $value ? true : false,
+                '!=' => $job[$column] != $value ? true : false,
+                '<' => $job[$column] < $value ? true : false,
+                '>' => $job[$column] > $value ? true : false,
+                '<=' => $job[$column] <= $value ? true : false,
+                '>=' => $job[$column] >= $value ? true : false
             };
+
+            if ($validateFilterResult) {
+
+                $tags = [];
+
+                foreach (explode('|', $job['tags']) as $tag) {
+                    $tags[] = Tag::parse($tag);
+                }
+
+                $jobs[] = new Job(
+                    Identity::parse($job['identity']),
+                    Image::parse($job['image']),
+                    Author::parse($job['author']),
+                    Title::parse($job['title']),
+                    TagCollection::parse($tags),
+                    City::parse($job['city']),
+                    (new DateTimeImmutable)->setTimestamp($job['createdAt']),
+                    (new DateTimeImmutable)->setTimestamp($job['updatedAt'])
+                );
+            }
         }
 
         return $jobs ?? false;
