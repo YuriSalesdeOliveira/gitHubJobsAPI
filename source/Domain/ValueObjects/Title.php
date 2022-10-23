@@ -8,7 +8,7 @@ class Title
 {
     private string $title;
 
-    public function __construc(string $title)
+    public function __construct(string $title)
     {
         $this->title = $title;
     }

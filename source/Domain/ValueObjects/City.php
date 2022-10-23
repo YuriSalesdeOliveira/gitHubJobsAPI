@@ -8,7 +8,7 @@ class City
 {
     private string $city;
 
-    public function __construc(string $city)
+    public function __construct(string $city)
     {
         $this->city = $city;
     }

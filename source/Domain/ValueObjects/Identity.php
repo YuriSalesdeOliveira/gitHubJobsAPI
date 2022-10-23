@@ -8,7 +8,7 @@ class Identity
 {
     private string $identity;
 
-    public function __construc(string $identity)
+    public function __construct(string $identity)
     {
         $this->identity = $identity;
     }

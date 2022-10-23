@@ -8,7 +8,7 @@ class TagCollection
 {
     private array $tagCollection;
 
-    public function __construc(array $tagCollection)
+    public function __construct(array $tagCollection)
     {
         $this->tagCollection = $tagCollection;
     }
@@ -42,6 +42,14 @@ class TagCollection
 
     public function toArray(): array
     {
-        return $this->tagCollection;
+        $tagCollection = [];
+
+        /** @var Tag $tag */
+        foreach ($this->tagCollection as $tag) {
+
+            $tagCollection[] = (string) $tag;
+        }
+
+        return $tagCollection;
     }
 }

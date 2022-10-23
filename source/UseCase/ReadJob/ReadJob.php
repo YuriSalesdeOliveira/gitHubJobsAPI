@@ -17,9 +17,12 @@ class ReadJob
         if ($filters = $input->getFilters()) {
             
             $jobs = $this->getJobRepository->where($filters);
+
+        } else {
+
+            $jobs = $this->getJobRepository->all();
         }
 
-        $jobs = $this->getJobRepository->all();
 
         $jobsAsArray = [];
 

@@ -8,7 +8,7 @@ class Tag
 {
     private string $tag;
 
-    public function __construc(string $tag)
+    public function __construct(string $tag)
     {
         $this->tag = $tag;
     }

@@ -2,7 +2,6 @@
 
 namespace Source\Domain\Entities;
 
-use Entity;
 use DateTimeImmutable;
 use Source\Domain\ValueObjects\City;
 use Source\Domain\ValueObjects\Image;
@@ -28,14 +27,14 @@ class Job extends Entity
     public function toArray(): array
     {
         $job = [
-            'identity' => $this->getIdentity(),
-            'image' => $this->getImage(),
-            'author' => $this->getAuthor(),
-            'title' => $this->getTitle(),
-            'tagCollection' => $this->getTagCollection(),
-            'city' => $this->getCity(),
-            'createdAt' => $this->getCreatedAt(),
-            'updatedAt' => $this->getUpdatedAt()
+            'identity' => (string) $this->getIdentity(),
+            'image' => (string) $this->getImage(),
+            'author' => (string) $this->getAuthor(),
+            'title' => (string) $this->getTitle(),
+            'tagCollection' => $this->getTagCollection()->toArray(),
+            'city' => (string) $this->getCity(),
+            'createdAt' => $this->getCreatedAt()->getTimestamp(),
+            'updatedAt' => $this->getUpdatedAt()->getTimestamp()
         ];
 
         return $job;

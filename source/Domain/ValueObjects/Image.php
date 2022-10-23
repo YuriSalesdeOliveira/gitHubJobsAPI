@@ -8,7 +8,7 @@ class Image
 {
     private string $image;
 
-    public function __construc(string $image)
+    public function __construct(string $image)
     {
         $this->image = $image;
     }

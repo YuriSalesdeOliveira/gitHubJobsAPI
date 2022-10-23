@@ -8,7 +8,7 @@ class Author
 {
     private string $author;
 
-    public function __construc(string $author)
+    public function __construct(string $author)
     {
         $this->author = $author;
     }

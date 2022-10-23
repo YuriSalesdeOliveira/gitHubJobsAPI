@@ -11,8 +11,9 @@
   ],
   "autoload": {
     "psr-4": {
-      "Source\\": "source/",
-      "Database\\": "database/"
+      "App\\": "app/",
+      "Database\\": "database/",
+      "Source\\": "source/"
     },
     "files": [
       "config/helpers.php"
