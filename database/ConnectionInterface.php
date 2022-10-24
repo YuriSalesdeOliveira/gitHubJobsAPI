@@ -2,8 +2,10 @@
 
 namespace Database;
 
+use PDO;
+
 interface ConnectionInterface
 {
-    public function connect();
-    public function getConnection();
+    public function connect(): PDO;
+    public function getConnection(): PDO;
 }
