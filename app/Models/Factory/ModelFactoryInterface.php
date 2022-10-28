@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Factory;
+
+use App\Models\Model;
 
 interface ModelFactoryInterface
 {
