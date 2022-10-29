@@ -1,11 +1,11 @@
 <?php
 
-namespace Source\UseCase\ReadJob;
+namespace Source\UseCase\ReadJobs;
 
 use Source\Domain\Entities\Job;
 use Source\Domain\RepositoriesInterfaces\GetJobRepositoryInterface;
 
-class ReadJob
+class ReadJobs
 {
     public function __construct(
         private GetJobRepositoryInterface $getJobRepository

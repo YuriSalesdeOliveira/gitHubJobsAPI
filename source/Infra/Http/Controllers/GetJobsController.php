@@ -2,14 +2,14 @@
 
 namespace Source\Infra\Http\Controllers;
 
-use Source\UseCase\ReadJob\ReadJob;
-use Source\UseCase\ReadJob\InputBoundary;
-use Source\UseCase\ReadJob\OutputBoundary;
+use Source\UseCase\ReadJobs\ReadJobs;
+use Source\UseCase\ReadJobs\InputBoundary;
+use Source\UseCase\ReadJobs\OutputBoundary;
 
 class GetJobsController extends Controller implements ControllerInterface
 {
     public function __construct(
-        private ReadJob $useCase
+        private ReadJobs $useCase
     ) {
     }
 

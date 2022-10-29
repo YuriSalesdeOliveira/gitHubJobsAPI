@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\UseCase\ReadJob;
+namespace Source\UseCase\ReadJobs;
 
 class OutputBoundary
 {

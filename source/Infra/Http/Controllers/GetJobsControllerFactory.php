@@ -2,7 +2,7 @@
 
 namespace Source\Infra\Http\Controllers;
 
-use Source\UseCase\ReadJob\ReadJob;
+use Source\UseCase\ReadJobs\ReadJobs;
 use Source\Infra\Repositories\Memory\GetJobRepository;
 
 class GetJobsControllerFactory implements ControllerFactoryInterface
@@ -12,7 +12,7 @@ class GetJobsControllerFactory implements ControllerFactoryInterface
         $getJobRepository = new GetJobRepository();
 
         return new GetJobsController(
-            new ReadJob($getJobRepository)
+            new ReadJobs($getJobRepository)
         );
     }
 }
