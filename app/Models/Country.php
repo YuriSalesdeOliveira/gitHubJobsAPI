@@ -4,11 +4,11 @@ namespace App\Models;
 
 class Country extends Model
 {
-    protected string $table = 'countries';
-    protected string $primaryKey = 'identity';
-    protected array $columns = [
+    protected static string $table = 'countries';
+    protected static string $primaryKey = 'identity';
+    protected static array $columns = [
         'name',
         'continent'
     ];
-    protected bool $timestamp = true;
+    protected static bool $timestamp = true;
 }

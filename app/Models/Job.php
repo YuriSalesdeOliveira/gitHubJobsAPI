@@ -4,14 +4,14 @@ namespace App\Models;
 
 class Job extends Model
 {
-    protected string $table = 'jobs';
-    protected string $primaryKey = 'identity';
-    protected array $columns = [
+    protected static string $table = 'jobs';
+    protected static string $primaryKey = 'identity';
+    protected static array $columns = [
         'image',
         'author',
         'title',
         'tagCollection',
         'city',
     ];
-    protected bool $timestamp = true;
+    protected static bool $timestamp = true;
 }

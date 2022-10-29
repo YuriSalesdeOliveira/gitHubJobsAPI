@@ -4,11 +4,11 @@ namespace App\Models;
 
 class City extends Model
 {
-    protected string $table = 'cities';
-    protected string $primaryKey = 'identity';
-    protected array $columns = [
+    protected static string $table = 'cities';
+    protected static string $primaryKey = 'identity';
+    protected static array $columns = [
         'name',
         'state'
     ];
-    protected bool $timestamp = true;
+    protected static bool $timestamp = true;
 }

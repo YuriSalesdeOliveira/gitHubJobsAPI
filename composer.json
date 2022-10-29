@@ -16,7 +16,8 @@
       "Source\\": "source/"
     },
     "files": [
-      "config/helpers.php"
+      "config/helpers.php",
+      "config/database.php"
     ]
   },
   "require": {

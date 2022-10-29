@@ -2,55 +2,70 @@
 
 namespace App\Models;
 
-use Database\ConnectionInterface;
 use PDO;
 use PDOStatement;
 
 abstract class Model
 {
-    protected string $table;
-    protected string $primaryKey = 'id';
-    protected array $columns;
-    protected bool $timestamp = true;
+    protected static string $table;
+    protected static string $primaryKey = 'id';
+    protected static array $columns;
+    protected static bool $timestamp = true;
+
+    protected static array $configurations = [];
 
     protected PDO $connection;
     protected PDOStatement $statement;
 
-    public function __construct(ConnectionInterface $connection)
+    public function __construct()
     {
-        $this->connection = $connection->connect();
+        $this->connection = static::$configurations['connection'];
     }
 
+    public static function configurations(array $configurations): void
+    {
+        static::$configurations = $configurations;
+    }
+
+    //Read methods
+    
     public function fetch(): array
     {
         return $this->statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function all(): static
+    public static function all(): static
     {
-        return $this->select();
+        return static::select();
     }
 
-    public function find(array $filters = [], string $columns = '*'): static
+    public static function find(array $filters = [], string $columns = '*'): static
     {
-        return $this->select($filters, $columns);
+        return static::select($filters, $columns);
     }
 
-    protected function select(array $filters = [], string $columns = '*'): static
+    protected static function select(array $filters = [], string $columns = '*'): static
     {
-        $sql = "SELECT * FROM {$this->table}";
+        $sql = "SELECT {$columns} FROM " . static::$table;
 
-        $sql .= $this->where($filters);
+        $sql .= static::where($filters);
 
-        $columnValue = $this->getColumnValue($filters);
+        $params = [];
+        foreach ($filters as $filter) {
+            
+            [$column, $operator, $value] = $filter;
 
-        $this->statement = $this->connection->prepare($sql);
-        $this->statement->execute($columnValue);
+            $params[":{$column}"] = $value;
+        }
 
-        return $this;
+        $static = new static();
+        $static->statement = $static->connection->prepare($sql);
+        $static->statement->execute($params);
+
+        return $static;
     }
 
-    protected function where(array $filters): string
+    protected static function where(array $filters): string
     {
         $sql = ' WHERE 1 = 1';
 
@@ -64,17 +79,5 @@ abstract class Model
         return $sql;
     }
 
-    protected function getColumnValue(array $filters): array
-    {
-        $columnValue = [];
-
-        foreach ($filters as $filter) {
-
-            [$column,, $value] = $filter;
-
-            $columnValue[":{$column}"] = $value;
-        }
-
-        return $columnValue;
-    }
+    //Update methods
 }
